@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Tip calculator app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme base {
+      --color-green-400: hsl(172, 67%, 45%);
+      --color-green-900: hsl(183, 100%, 15%);
+      --color-grey-500: hsl(186, 14%, 43%);
+      --color-grey-400: hsl(184, 14%, 56%);
+      --color-grey-200: hsl(185, 41%, 84%);
+      --color-grey-50: hsl(189, 47%, 97%);
+      --color-white: hsl(0, 100%, 100%);
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-grey-200">
+  <header class="pt-8">
+    <h1 class="text-xl font-bold text-center text-green-900 mb-6 uppercase tracking-[10px]">spli<br>tter</h1>
+  </header>
+  <main class="bg-white rounded-xl p-8 max-w-2xl shadow-lg">
+    <form id="tip-calculator" class="flex flex-col md:flex-row gap-8">
+      <section class="calculator flex flex-col items-between gap-6 md:w-1/2">
+        <div class="flex flex-col gap-4">
+          <label for=" bill" class="text-xs font-bold text-gray-400">Bill</label>
+          <div class="bg-grey-50 rounded-md flex items-center p-1 text-grey-400">
+            <img src="images/icon-dollar.svg" alt="dollar icon" />
+            <input type="number" id="bill" placeholder="0"
+              class="bg-transparent border-none outline-none w-full text-right text-green-900" />
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between gap-4">
+          <label for="tip" class="text-xs font-bold text-gray-400">Select Tip %</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+            <div
+              class="bg-green-900 rounded-sm flex items-center p-1 text-white hover:bg-grey-200 hover:text-green-900 cursor-pointer">
+              <label for="tip-5" class="w-full text-center p-1 text-xl">
+                <input type="radio" id="tip-5" name="tip" value="5" class="appearance-none" />
+                5%
+              </label>
+            </div>
+
+            <div
+              class="bg-green-900 rounded-sm flex items-center p-1 text-white hover:bg-grey-200 hover:text-green-900 cursor-pointer">
+              <label for="tip-10" class="w-full text-center p-1 text-xl">
+                <input type="radio" id="tip-10" name="tip" value="10" class="appearance-none" />
+                10%
+              </label>
+            </div>
+
+            <div
+              class="bg-green-900 rounded-sm flex items-center p-1 text-white hover:bg-grey-200 hover:text-green-900 cursor-pointer">
+              <label for="tip-15" class="w-full text-center p-1 text-xl">
+                <input type="radio" id="tip-15" name="tip" value="15" class="appearance-none" />
+                15%
+              </label>
+            </div>
+
+            <div
+              class="bg-green-900 rounded-sm flex items-center p-1 text-white hover:bg-grey-200 hover:text-green-900 cursor-pointer">
+              <label for="tip-25" class="w-full text-center p-1 text-xl">
+                <input type="radio" id="tip-25" name="tip" value="25" class="appearance-none" />
+                25%
+              </label>
+            </div>
+
+            <div
+              class="bg-green-900 rounded-sm flex items-center p-1 text-white hover:bg-grey-200 hover:text-green-900 cursor-pointer">
+              <label for="tip-50" class="w-full text-center p-1 text-xl">
+                <input type="radio" id="tip-50" name="tip" value="50" class="appearance-none" />
+                50%
+              </label>
+            </div>
+
+            <div class="bg-grey-50 rounded-sm flex items-center p-1 text-grey-400">
+              <label for="tip-custom" class="w-full text-center p-1 flex items-center justify-between">
+                <input type="radio" id="tip-custom" name="tip" value="" class="appearance-none" />
+                <input type="number" id="tip-custom-value"
+                  class="bg-transparent border-none outline-none w-full text-right text-green-900""
+                  placeholder=" Custom" />
+              </label>
+            </div>
+
+          </div>
+        </div>
+        <div class="flex flex-col gap-4 w-full">
+          <div class="flex justify-between items-center">
+            <label for="people" class="text-xs font-bold text-gray-400">Number of People</label>
+            <div class="text-xs text-red-600 hidden" id="people-error">Can't be zero</div>
+          </div>
+          <div id="people-wrapper"
+            class="bg-grey-50 rounded-md flex items-center p-1 text-grey-400 relative border-red-600">
+            <img src="images/icon-person.svg" alt="person icon" />
+            <input type="number" id="people" placeholder="1"
+              class="bg-transparent border-none outline-none w-full text-right text-green-900 " />
+          </div>
+        </div>
+      </section>
+      <section class="results bg-green-900 rounded-lg p`-8 flex flex-col justify-between gap-6 md:w-1/2">
+        <div class="flex justify-between items-center">
+          <div class="flex flex-col mr-14">
+            <div class="text-white text-xs w-full mr-10">Tip Amount</div>
+            <div class="text-grey-400 text-xs">/ person
+            </div>
+          </div>
+          <div class="text-lg text-green-400">
+            <span id="tip-amount" class="text-4xl text-green-400">$0.00</span>
+          </div>
+        </div>
+        <div class="flex justify-between items-center">
+          <div class="flex flex-col mr-14">
+            <div class="text-white text-xs">Total</div>
+            <div class="text-grey-400 text-xs">/ person</div>
+          </div>
+          <div class="text-lg text-green-400">
+            <span id="total-amount" class="text-4xl text-green-400">$0.00</span>
+          </div>
+        </div>
+        <button type="reset" id="reset"
+          class="w-full uppercase bg-green-400 text-green-900 text-center text-sm p-2 rounded-md hover:bg-grey-200 text-green-900">Reset</button>
+      </section>
+    </form>
+  </main>
+  <script src="script.js" type="module"></script>
+</body>
+
+</html>

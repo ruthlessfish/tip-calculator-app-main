@@ -1,0 +1,24 @@
+:root {
+
+    --clr-green-900: hsl(172, 67%, 45%);
+    --clr-green-700: hsl(183, 100%, 15%);
+    --clr-green-100: hsl(185, 41%, 84%);
+    --clr-grey-200: hsl(0, 0%, 86%);
+    --clr-white: hsl(0, 0%, 100%);
+}
+
+html {
+    font-family: 'Space Mono', monospace;
+}
+
+body {
+    max-width: 375px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+@media (min-width: 640px) {
+    body {
+        max-width: 1440px;
+    }
+}
